@@ -1,0 +1,41 @@
+﻿@model IEnumerable<BibliotecaJoia.Models.Dtos.LivroDto>
+
+@{
+    ViewData["Title"] = "List";
+}
+
+<h1>Cadastro de Livros</h1>
+
+<p>
+    <a asp-action="Create">Adicionar Livro</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.ActionLink("Atualizar", "Edit", new { id=item.Id}) |
+                @Html.ActionLink("Detalhe", "Details", new { id=item.Id}) |
+                @Html.ActionLink("Exclusão", "Delete", new { id=item.Id})
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
